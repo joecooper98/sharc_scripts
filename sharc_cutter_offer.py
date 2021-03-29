@@ -14,7 +14,7 @@
 #
 # according to the source code of SHARC (from mar 21), the output.dat file is the only file that is needed to generate the data - the .lis and .log files are purely for humans
 #
-#
+# Will only work with a BASH-like operating system (I think also will work with z-shell)
 
 import os
 import numpy as np
