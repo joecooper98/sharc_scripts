@@ -62,7 +62,7 @@ for line in fin: # parse file
 
 i=0 # init iteration variables
 j=0
-while j<step_number+2: # find the point which we need to delete after
+while j<step_number: # find the point which we need to delete after
     if change_data[i]==['!', '0', 'Step']: # this is the line initiating a new step in the output file. We want to delete after the n+1th version of it
         j+=1
     i+=1
