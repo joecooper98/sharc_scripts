@@ -5,9 +5,9 @@
 # This script goes into a SHARC directory, and then finds the first time where
 # the energy gap between the current state and a defined 'ground' state is less
 # than a set threshold. After that, it alters the output.xyz and output.dat
-# 
-# use command 
-# for i in `ls -d */`; do cd $i ; ./thisscript.py ; $SHARC/data_extractor.x newoutput.dat ; cd .. ; done 
+#
+# use command
+# for i in `ls -d */`; do cd $i ; ./thisscript.py ; $SHARC/data_extractor.x newoutput.dat ; cd .. ; done
 #
 # this requires that you've already run $SHARC/data_extractor.x - if you haven't, do, or uncomment the first os.system command
 # this will print the changed output to files called newoutput.dat and newoutput.xyz - imaginatively corresponding to output.dat and output.xyz respectively
@@ -45,7 +45,7 @@ for i in range(np.shape(energy_data)[0]): # for each time step
         print("Time that energy is below threshold = " + str(energy_data[i-1,0])+" fs") # print time
         time_break=energy_data[i,0] # time is gets to that condition - this is the FIRST timestep we DON'T want
         break
-    
+
 
 step_number=int(time_break/step_time + 1) # the step number of that state
 
@@ -62,7 +62,7 @@ for line in fin: # parse file
 
 i=0 # init iteration variables
 j=0
-while j<step_number+1: # find the point which we need to delete after
+while j<step_number+2: # find the point which we need to delete after
     if change_data[i]==['!', '0', 'Step']: # this is the line initiating a new step in the output file. We want to delete after the n+1th version of it
         j+=1
     i+=1
