@@ -71,25 +71,4 @@ while j<step_number+1: # find the point which we need to delete after
 
 os.system("head -n"+str(i-1)+" output.dat > newoutput.dat") # command to pipe to new file
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #os.system("$SHARC/data_extractor.x newoutput.dat") # uncomment if you want to run the command from this script
