@@ -50,6 +50,46 @@ for i in range(np.shape(energy_data)[0]): # for each time step
 step_number=int(time_break/step_time + 1) # the step number of that state
 
 
-os.system("k=`grep -n  '! 0 Step' output.dat | head -n"+ str(step_number) +" | tail -n1 | cut -d':' -f1` ; head -n`expr $k - 1` output.dat > newoutput.dat") # finds the point in the .dat file whence we don't want, and deletes all lines after
+
 os.system("head -n"+str((step_number-1)*(no_atoms+2))+" output.xyz > newoutput.xyz") # deletes all geometries we don't want
+
+dat_filename='output.dat' # output file name
+fin=open(dat_filename,"r") # open this file
+
+change_data = [] # init blank array
+for line in fin: # parse file
+    change_data.append(line.split())#
+
+i=0 # init iteration variables
+j=0
+while j<step_number+1: # find the point which we need to delete after
+    if change_data[i]==['!', '0', 'Step']: # this is the line initiating a new step in the output file. We want to delete after the n+1th version of it
+        j+=1
+    i+=1
+
+#print(i,change_data[i]) #for checkuing
+
+os.system("head -n"+str(i-1)+" output.dat > newoutput.dat") # command to pipe to new file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #os.system("$SHARC/data_extractor.x newoutput.dat") # uncomment if you want to run the command from this script
