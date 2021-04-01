@@ -67,8 +67,16 @@ while j<step_number: # find the point which we need to delete after
         j+=1
     i+=1
 
-#print(i,change_data[i]) #for checkuing
-
 os.system("head -n"+str(i-1)+" output.dat > newoutput.dat") # command to pipe to new file
 
+lisfile='output.lis' # lsit file to change
+
+lisin=open(lisfile,"r") # open the file 
+           
+lisdat_2=[] # init blank array
+for line in lisin: # parse only first column of the array
+      lisdat_2.append(line.split()[0])
+
+os.system("head -n"+str(lisdat_2.index(str(step_number)))+" output.list > newoutput.lis") # take first x lines, where x is the uindex of the last step we want - i.e. cut of the file at the last time point.
+    
 #os.system("$SHARC/data_extractor.x newoutput.dat") # uncomment if you want to run the command from this script
