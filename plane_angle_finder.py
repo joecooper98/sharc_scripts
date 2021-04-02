@@ -54,6 +54,6 @@ def vec_pla_ang(central_point, vector_point, plane_point_1, plane_point_2):
     elif angle>90:
         newangle=270-angle
 
-    return newangle
+    return 180 - newangle
 
 print("    ", s[1].split()[1], "       ", vec_pla_ang(geom[cpa,:],geom[vpa,:],geom[pp1a,:],geom[pp2a,:]))
